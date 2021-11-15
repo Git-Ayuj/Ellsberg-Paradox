@@ -1,0 +1,176 @@
+{% extends "index.html" %} {% block css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/consentForm.css') }}"
+/>
+{% endblock css %} {% block script %}
+  <script src="{{ url_for('static', filename='js/consentForm.js') }}"></script>
+{% endblock script %} {% block body %}
+<div id="header" class="section">
+  <h2>Consent Form</h2>
+  <p>This game is part of a project at IIT Mandi for the course CS308.</p>
+  <p>The purpose of the research is to study the decision-making process.</p>
+</div>
+
+<div class="section">
+  <h3>Procedures</h3>
+  <p>
+    You will make a series of decisions with the objective of getting the
+    maximum possible points.
+  </p>
+</div>
+
+<div class="section">
+  <h3>Participant Requirements</h3>
+  <p>
+    Participation in this study is limited to individuals aged 18 and older.
+  </p>
+</div>
+
+<div class="section">
+  <h3>Risks</h3>
+  <p>
+    The risks and discomfort associated with participation in this study are no
+    greater than those ordinarily encountered in daily life or during other
+    online activities.
+  </p>
+</div>
+
+<div class="section">
+  <h3>Benefits</h3>
+  <p>
+    There may be no personal benefit from your participation in the study but
+    the knowledge received may be of value to humanity.
+  </p>
+</div>
+
+<div class="section">
+  <h3>Compensation & Costs</h3>
+  <p>
+    You will be compensated for completing the game at the rate initially
+    advertised. You will only be eligible for compensation if you have completed
+    the game in full and supplied the appropriate confirmation code. There is no
+    partial payment if you do not complete the study.
+  </p>
+  <p>There will be no cost to you if you participate in this study.</p>
+</div>
+
+<div class="section">
+  <h3>Confidentiality</h3>
+  <p>
+    The data captured for the research does not include any personally
+    identifiable information about you. Your IP address will not be captured and
+    your email address will not be used for identification.
+  </p>
+  <p>
+    By participating in this research, you understand and agree that we may be
+    required to disclose your consent form, data and other personally
+    identifiable information as required by law, regulation, subpoena or court
+    order. Otherwise, your confidentiality will be maintained in the following
+    manner:
+  </p>
+  <p>
+    Your data and consent form will be kept separate. Your consent form will be
+    stored in a locked location on our property and will not be disclosed to
+    third parties. By participating, you understand and agree that the data and
+    information gathered during this study may be used by us and published
+    and/or disclosed by us to others outside of relationship. However, your
+    name, address, contact information and other direct personal identifiers in
+    your consent form will not be mentioned in any such publication or
+    dissemination of the research data and/or results by us.
+  </p>
+</div>
+
+<div class="section">
+  <form id="consentForm" method="POST">
+    <h3>Voluntary Participation</h3>
+    <p>
+      Your participation in this research is voluntary. You may discontinue
+      participation at any time during the research activity.
+    </p>
+    <p>I am age 18 or older.</p>
+    <fieldset id="first">
+      <input
+        type="radio"
+        id="yes1"
+        name="radio1"
+        value="yes"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+        required
+      />
+      <label for="yes1">Yes</label><br />
+      <input
+        type="radio"
+        id="no1"
+        name="radio1"
+        value="no"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+      />
+      <label for="no1">No</label><br />
+    </fieldset>
+
+    <p>I have read and understand the information above.</p>
+    <fieldset id="second">
+      <input
+        type="radio"
+        id="yes2"
+        name="radio2"
+        value="yes"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+        required
+      />
+      <label for="yes2">Yes</label><br />
+      <input
+        type="radio"
+        id="no2"
+        name="radio2"
+        value="no"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+      />
+      <label for="no2">No</label><br />
+    </fieldset>
+
+    <p>I want to participate in this research and continue with the game.</p>
+    <fieldset id="third">
+      <input
+        type="radio"
+        id="yes3"
+        name="radio3"
+        value="yes"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+        required
+      />
+      <label for="yes3">Yes</label><br />
+      <input
+        type="radio"
+        id="no3"
+        name="radio3"
+        value="no"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+      />
+      <label for="no3">No</label><br />
+    </fieldset>
+
+    <div>
+      <input
+        class="submit_button"
+        type="submit"
+        value="Play Experience Game"
+        onclick="redirectTo('/exp/demographics')"
+      />
+      <input
+        class="submit_button"
+        type="submit"
+        value="Play Description Game"
+        onclick="redirectTo('/desc/demographics')"
+      />
+    </div>
+  </form>
+</div>
+{% endblock body %}

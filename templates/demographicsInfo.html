@@ -1,0 +1,95 @@
+{% extends "index.html" %} {% block css %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/demographicsInfo.css')}}"
+/>
+{% endblock css %} {% block script %}
+<script src="{{ url_for('static', filename='js/demographicsInfo.js') }}"></script>
+<script>
+  {% if redirect_to == 'exp_sampling' %}
+    setSessionId("exp_sid", "{{ sid }}");
+  {% else %}
+    setSessionId("desc_sid", "{{ sid }}");
+  {% endif %}
+</script>
+{% endblock script %} {% block body %}
+<div class="section" id="header">
+  <h2>Demographics Information</h2>
+  <p>
+    Please tell us a little about yourself. All fields are required. All answers
+    are confidential.
+  </p>
+</div>
+
+<div class="section">
+  <form action="{{ url_for(redirect_to) }}" method="POST">
+    <label for="age">What is your age?</label>
+    <input
+      type="number"
+      name="age"
+      id="age"
+      min="18"
+      max="100"
+      onchange="addToLocalStorage(this)"
+      required
+    /><br />
+
+    <label for="gender">What is your gender?</label>
+    <select name="gender" id="gender" onchange="addToLocalStorage(this)" required>
+      <option value="" selected disabled hidden>
+        -- Please Select an Option --
+      </option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option></select
+    ><br />
+
+    <label for="education"
+      >What is the highest level of education you've completed?</label
+    >
+    <select name="education" id="education" onchange="addToLocalStorage(this)" required>
+      <option value="" selected disabled hidden>
+        -- Please Select an Option --
+      </option>
+      <option value="high_school">High School or Lower</option>
+      <option value="graduation">Graduation</option>
+      <option value="post_graduation">Post Graduation</option></select
+    ><br />
+
+    <label for="major">What is your current or past major in school?</label>
+    <input type="text" name="major" id="major" onchange="addToLocalStorage(this)" required /><br />
+
+    <label for="occupation">What is your current occupation?</label>
+    <input type="text" name="occupation" id="occupation" onchange="addToLocalStorage(this)" required /><br />
+
+    <label for="marital_status">What is your marital status?</label>
+    <select name="marital_status" id="marital_status" onchange="addToLocalStorage(this)" required>
+      <option value="" selected disabled hidden>
+        -- Please Select an Option --
+      </option>
+      <option value="single">Single</option>
+      <option value="married">Married</option>
+      <option value="divorced">Divorced</option></select
+    ><br />
+
+    <label for="annual_income">What is your annual income?</label>
+    <select name="annual_income" id="annual_income" onchange="addToLocalStorage(this)" required>
+      <option value="" selected disabled hidden>
+        -- Please Select an Option --
+      </option>
+      <option value="Less than 5000 USD">Less than 5000 USD</option>
+      <option value="USD 5,000 - 10,000">USD 5,000 - 10,000</option>
+      <option value="USD 10,000 - 50,000">USD 10,000 - 50,000</option>
+      <option value="USD 50,000 - 75,000">USD 50,000 - 75,000</option>
+      <option value="USD 75,000 - 100,000">USD 75,000 - 100,000</option>
+      <option value="USD 100,000 - 150,000">USD 100,000 - 150,000</option>
+      <option value="More than 150,000 USD">
+        More than 150,000 USD
+      </option></select
+    ><br />
+
+    <div><input class="submit_button" type="submit" value="Submit" /></div>
+  </form>
+</div>
+
+{% endblock body %}

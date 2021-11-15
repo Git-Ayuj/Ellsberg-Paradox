@@ -1,0 +1,90 @@
+{% extends "index.html" %} {% block css %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/allocate.css')}}"
+/>
+{% endblock css %} {% block script %}
+<script src="{{ url_for('static', filename='js/allocate.js') }}"></script>
+{% endblock script %} {% block body %}
+<div id="header" class="section">
+  <h2>Allocation Phase</h2>
+  <p>
+    Imagine that your country is preparing for an outbreak of the new
+    coronavirus disease, which is expected to kill 600 people in your country.
+    Two alternative programs to combat the disease have been proposed. Assume
+    that the exact scientific estimates of the programs are as follows:
+  </p>
+</div>
+
+<div class="section">
+  <div id="flexbox">
+    <div>
+      <div><strong>Program A</strong></div>
+      <div class="box">200 people will be saved.</div>
+    </div>
+    <div>
+      <div><strong>Program B</strong></div>
+      <div class="box">
+        <p>There is 1/3 probability that 600 people will be saved,</p>
+        <p>and</p>
+        <p>2/3 probability that no people will be saved.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    In what proportion would you allocate Rs. 1,000 between the given programs?
+    (Please note that the sum of the proportions across the given programs
+    should be 100% and, if you want, you can choose to allocate 100% of the Rs.
+    1,000 in one of the given programs)
+  </p>
+</div>
+
+<div class="section">
+  <form action="{{ url_for('desc_outcome') }}" method="POST">
+    <p>Proportion of Rs. 1,000 in Program A</p>
+    <input
+      onchange="handleChange()"
+      id="prog1"
+      type="number"
+      min="0"
+      max="100"
+      name="proportion"
+      required
+    /><br /><br />
+
+    <p>Proportion of Rs. 1,000 in Program B</p>
+    <input id="prog2" type="number" disabled /><br /><br />
+
+    <p>
+      Among the programs presented to you, which of the following statements
+      reflects your preference:
+      <strong>(Select one option button to proceed)</strong>
+    </p>
+    <fieldset>
+      <input
+        type="radio"
+        value="a"
+        id="programA"
+        name="preference"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+        required
+      />
+      <label for="programA">Strong preference for Program A</label><br />
+
+      <input
+        type="radio"
+        value="b"
+        id="programB"
+        name="preference"
+        class="radio_option"
+        onchange="addToLocalStorage(this)"
+      />
+      <label for="programB">Strong preference for Program B</label><br />
+    </fieldset>
+
+    <div><input class="submit_button" type="submit" value="Submit" /></div>
+  </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,15 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    {% block css %} {% endblock %} {% block script %} {% endblock %}
+  </head>
+
+  <body>
+    <div class="container">{% block body %}{% endblock %}</div>
+  </body>
+</html>

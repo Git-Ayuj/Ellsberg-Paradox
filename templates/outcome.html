@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block css %}
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/outcome.css')}}"
+    />
+{% endblock css %} {% block script %}
+<script>
+    window.onload = clearLocalStorage;
+</script>
+{% endblock script %} {% block body %}
+<div id="header" class="section">
+    <h2>Outcome</h2>
+</div>
+<div class="section">
+    <p>Thank you for participating in the game.</p>
+    {% if people_saved > 0 %}
+        <p><b>Based on your choices, {{ people_saved }} people were saved!</b></p>
+    {% else %}
+        <p><b>Based on your choices, no one was saved!</b></p>
+    {% endif %}
+    <div style="text-align: center;">
+        <button class="submit_button" style="margin-top: 15px;">
+            <a href="/">Home Page</a>
+        </button>
+    </div>
+</div>
+{% endblock body %}

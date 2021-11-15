@@ -1,0 +1,71 @@
+{% extends "index.html" %} {% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/sampling.css')}}" />
+{% endblock css %} {% block script %}
+<script>
+
+  function handleForm() {
+    var children = document.getElementById("allocForm").children, values = [twoh, sixh, zero];
+    for(var i=0; i<3; i++)
+    children[i].value = values[i];
+  }
+
+  function submitForm(x) {
+    var form = document.getElementById("samplingForm");
+    var program = document.getElementById("program");
+    program.value = x;
+    form.submit();
+  }
+
+</script>
+{% endblock script %} {% block body %}
+
+<div class="section">
+  <div id="header">
+    <h2>Sampling Phase</h2>
+  </div>
+
+  <p>
+    Imagine that your country is preparing for an outbreak of the coronavirus
+    disease, which is expected to kill certain number of people in your country.
+    In this task, you need to choose between different health programs designed to
+    combat the virus. <br><br>
+
+    Health programs are represented by buttons. You have Rs. 1,000 with you. You can
+    allocate this money in the following two programs (represented as two buttons).
+    By clicking on an program button below, you can gather information about the 
+    outcome of the program associated with the button (sampling phase). The outcome
+    shown on a button option during the sampling phase will not affect the final result. <br><br>
+    
+    Once you are satisfied with your sampling of the button programs, you may click
+    the "Make Allocations" button to enter the allocation phase. In the allocation phase,
+    you need to allocate Rs. 1,000 to different allocation programs once. Your allocations
+    in the allocation phase will be the final outcome that you choose.
+  </p>
+  </br>
+</div>
+
+<div class="section">
+  <div class="center">
+    <form id="samplingForm" action="{{ url_for('exp_sampling') }}" style="display: flex;" method="POST">
+      <input id="program" name="program" value="a" style="display: none;"/>
+      <div class="box" onclick="submitForm('a')">Program A</div>
+      <div class="box" onclick="submitForm('b')">Program B</div>
+    </form>
+  </div>
+  
+  <br>
+  <div id="result">
+    {% if people_saved >= 0 %}
+      {% if people_saved == 0 %}
+      Based on your preference, no one was saved!
+      {% else %}
+      Based on your preference, {{ people_saved }} people were saved!
+      {% endif %}
+    {% endif %}
+  </div>
+  <br>
+
+  <div class="center"><a class="submit_button" href="{{ url_for('exp_allocate') }}">Make Allocations ></a></div>
+
+</div>
+{% endblock body %}

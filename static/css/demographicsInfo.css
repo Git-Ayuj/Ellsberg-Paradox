@@ -1,0 +1,25 @@
+.section > form {
+  margin-top: 30px;
+}
+
+.section > form > label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.section > form > input {
+  margin-bottom: 15px;
+}
+
+.section > form > select {
+  margin-bottom: 15px;
+}
+
+#age {
+  max-width: 8%;
+}
+
+.section > form > div {
+  display: flex;
+  justify-content: center;
+}

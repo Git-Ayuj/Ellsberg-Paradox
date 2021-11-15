@@ -1,0 +1,19 @@
+{% extends "index.html" %} {% block script %}
+<script>
+  window.onload = clearLocalStorage;
+</script>
+{% endblock script %} {% block body %}
+<div id="header" class="section">
+  <h2>Thank You</h2>
+  <p>Sorry, you cannot continue with the experiment unless:</p>
+</div>
+<div style="margin-left: 5%" class="section">
+  <ol>
+    <li>You are 18 years old or older.</li>
+    <li>
+      You have read and understood the information provided in the consent form.
+    </li>
+    <li>You are willing to participate in the research.</li>
+  </ol>
+</div>
+{% endblock body %}

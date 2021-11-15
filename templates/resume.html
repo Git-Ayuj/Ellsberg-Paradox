@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block script %}
+<script>
+    function setRedirectPath() {
+        var button = document.getElementById('button'), ind = localStorage.getItem('exp_index');
+        if(ind != null)
+            button.href = expOrder[parseInt(ind)];
+        else
+            button.href = descOrder[localStorage.getItem('desc_index')];
+    }
+    window.onload = setRedirectPath;
+</script>
+{% endblock script %}
+
+{% block body %}
+<div id="header" class="section">
+    <h2>Resume Game</h2>
+</div>
+<div class="section">
+    <p>
+        A game is already in progress. Please click on the button to resume the game!
+    </p>
+    <br>
+    <div class="center">
+        <a id="button" class="submit_button" style="text-decoration: none; padding: 5px 10px;">Resume Game</a>
+    </div>
+</div>
+{% endblock body %}
